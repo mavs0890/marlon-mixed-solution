@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Database.fs" />
+    <Compile Include="WorldCupRepository.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Marlon.Domain.Types\Marlon.Domain.Types.fsproj" />
+    <ProjectReference Include="..\Marlon.Infrastructure\Marlon.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

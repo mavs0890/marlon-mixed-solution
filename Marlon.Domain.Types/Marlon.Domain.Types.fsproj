@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Extensions\ListExtensions.fs" />
+    <Compile Include="Extensions\OptionExtensions.fs" />
+    <Compile Include="WorldCupId.fs" />
+    <Compile Include="Year.fs" />
+    <Compile Include="Country.fs" />
+    <Compile Include="WorldCupFsharp.fs" />
+  </ItemGroup>
+
+</Project>
