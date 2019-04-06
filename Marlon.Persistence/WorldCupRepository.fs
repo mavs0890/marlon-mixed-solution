@@ -20,6 +20,7 @@ module WorldCupFsharpRepositoryModule =
         Year : int
         HostCountry : string
         Winner : string
+        isEuropeanWinner : Nullable<bool>
     }
 
     let toDomain (dto : WorldCupDto) : WorldCupFsharp =
@@ -28,6 +29,15 @@ module WorldCupFsharpRepositoryModule =
             Year = dto.Year |> Year.create
             HostCountry = dto.HostCountry |> Country
             Winner = dto.Winner |> Country
+        }
+
+    let toDomainWithIsEuropeanWinner (dto: WorldCupDto) : WorldCupFsharpWithIsEuropeanWinner =
+        {
+            Id = dto.Id |> WorldCupId
+            Year = dto.Year |> Year.create
+            HostCountry = dto.HostCountry |> Country
+            Winner = dto.Winner |> Country
+            IsEuropeanWinner = dto.isEuropeanWinner |> Option.ofNullable
         }
 
     let save writeData (worldCup : WorldCupFsharp) : unit =
@@ -50,7 +60,7 @@ module WorldCupFsharpRepositoryModule =
         
     let findByYear readData (Year year) =
         let query = """
-            select id, year, host_country as hostCountry, winner
+            select id, year, host_country as hostCountry, winner, is_european_winner as isEuropeanWinner
             from world_cup
             where year = @year
         """
