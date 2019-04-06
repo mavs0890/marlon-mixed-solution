@@ -75,21 +75,21 @@ module WorldCupFsharpRepositoryModule =
 // Classes are more friendly to C# than functions and modules
 // 3 - $$ - Wrapper class
 
-//type IWorldCupRepository =
-//    abstract member Save : WorldCupFsharp -> unit
-//    abstract member FindByYear : Year -> WorldCupFsharp option
+type IWorldCupRepository =
+    abstract member Save : WorldCupFsharp -> unit
+    abstract member FindByYear : Year -> WorldCupFsharp option
 
-//type WorldCupRepository (connection : IPostgresConnection) =
-//    let writeData = FuncConvert.FuncFromTupled connection.writeData
-//    let readData = FuncConvert.FuncFromTupled connection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>
-//    interface IWorldCupRepository with
-//        member __.Save worldCup =
-//            WorldCupFsharpRepositoryModule.save
-//                writeData
-//                worldCup
-//        member __.FindByYear year = 
-//            WorldCupFsharpRepositoryModule.findByYear
-//                readData
-//                year
+type WorldCupRepository (connection : IPostgresConnection) =
+    let writeData = FuncConvert.FuncFromTupled connection.writeData
+    let readData = FuncConvert.FuncFromTupled connection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>
+    interface IWorldCupRepository with
+        member __.Save worldCup =
+            WorldCupFsharpRepositoryModule.save
+                writeData
+                worldCup
+        member __.FindByYear year = 
+            WorldCupFsharpRepositoryModule.findByYear
+                readData
+                year
 
 // end - 3 - $$

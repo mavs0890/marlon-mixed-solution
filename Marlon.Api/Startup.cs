@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Marlon.Domain.Types;
 using Marlon.Infrastructure;
 using Marlon.Infrastructure.Repositories;
 using Marlon.Persistence;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Marlon.Workflows;
 
 namespace Marlon.Api
 {
@@ -40,7 +42,18 @@ namespace Marlon.Api
             services.AddSingleton<IPostgresConnection, PostgresConnection>();
             services.AddSingleton<IWorldCupRepositoryCSharpV0, WorldCupRepositoryCSharpV0>();
             services.AddSingleton<IWorldCupRepositoryCSharpWithFsharpTypesV1, WorldCupRepositoryCSharpWithFsharpTypesV1>();
-            //services.AddSingleton<IWorldCupRepository, WorldCupRepository>();
+            services.AddSingleton<IWorldCupRepository, WorldCupRepository>();
+
+            services.AddSingleton<ICreateWorldCupWorkflow>(s =>
+            {
+                var worldCupRepoService = s.GetService<IWorldCupRepository>();
+
+                return new CreateWorldCupWorkflow(
+                    generateId: () => WorldCupId.NewWorldCupId(Guid.NewGuid()),
+                    findWorldCup: year => worldCupRepoService.FindByYear(year),
+                    saveWorldCup: wc => worldCupRepoService.Save(wc)
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

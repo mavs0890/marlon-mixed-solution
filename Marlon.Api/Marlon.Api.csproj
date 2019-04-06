@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Marlon.Infrastructure\Marlon.Infrastructure.csproj" />
     <ProjectReference Include="..\Marlon.Persistence\Marlon.Persistence.fsproj" />
+    <ProjectReference Include="..\Marlon.Workflows\Marlon.Workflows.fsproj" />
   </ItemGroup>
 
 </Project>
