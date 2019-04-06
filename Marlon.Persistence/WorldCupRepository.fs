@@ -11,16 +11,15 @@ open Marlon.Infrastructure
 //2 - $$ F# module 
 
 module WorldCupFsharpRepositoryModule =
+    //talk about CLI mutable
+    //needed for JSON serialization and dapper
+    //mapping a nullable to an option type? - important because of working with library like dapper that was build for C#
     [<CLIMutable>]
     type WorldCupDto = {
         Id : Guid
         Year : int
         HostCountry : string
-        Mascot : string
         Winner : string
-        SecondPlace : string
-        ThirdPlace : string
-        TopScorer : string
     }
 
     let toDomain (dto : WorldCupDto) : WorldCupFsharp =
@@ -49,7 +48,7 @@ module WorldCupFsharpRepositoryModule =
 
     
         
-    let findByYear readData year =
+    let findByYear readData (Year year) =
         let query = """
             select id, year, host_country as hostCountry, winner
             from world_cup
@@ -58,7 +57,7 @@ module WorldCupFsharpRepositoryModule =
         readData
             query
             ([ 
-                p "year" (year |> Year.value)
+                p "year" year
             ] |> dict)
         |> List.ofSeq
         |> List.singleOrNone
@@ -72,8 +71,10 @@ module WorldCupFsharpRepositoryModule =
 
 
 
-
+// its usually better to write that bridge code in F# than it is in F#
+// Classes are more friendly to C# than functions and modules
 // 3 - $$ - Wrapper class
+
 //type IWorldCupRepository =
 //    abstract member Save : WorldCupFsharp -> unit
 //    abstract member FindByYear : Year -> WorldCupFsharp option

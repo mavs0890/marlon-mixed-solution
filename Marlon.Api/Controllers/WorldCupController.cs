@@ -123,7 +123,7 @@ namespace Marlon.Api.Controllers
         //        WorldCupId.NewWorldCupId(Guid.NewGuid()),
         //        YearModule.create(wc.Year),
         //        Country.NewCountry(wc.HostCountry),
-        //        Country.NewCountry(wc.Winner),
+        //        Country.NewCountry(wc.Winner)
         //        );
 
         //    _worldCupRepositoryCSharpWithFsharpTypesV1.Save(worldCupCsharp);
@@ -167,14 +167,22 @@ namespace Marlon.Api.Controllers
         //[HttpGet("{year}")]
         //public IActionResult Index(int year)
         //{
+        //    //Func<string, IDictionary<string, object>, FSharpList<WorldCupFsharpRepositoryModule.WorldCupDto>>
+        //    //    readDataFunc =
+        //    //        delegate (string statement, IDictionary<string, object> parameters)
+        //    //        {
+        //    //            var list = _postgresConnection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>(statement,
+        //    //                parameters);
+        //    //            return ListModule.OfSeq(list);
+        //    //        };
+
         //    Func<string, IDictionary<string, object>, FSharpList<WorldCupFsharpRepositoryModule.WorldCupDto>>
-        //        readDataFunc =
-        //            delegate(string statement, IDictionary<string, object> parameters)
-        //            {
-        //                var list = _postgresConnection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>(statement,
-        //                    parameters);
-        //                return ListModule.OfSeq(list);
-        //            };
+        //        readDataFunc = (s, p) =>
+        //        {
+        //            var list = _postgresConnection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>(s,
+        //                p);
+        //            return ListModule.OfSeq(list);
+        //        };
 
         //    var readData = FuncConvert.FromFunc(readDataFunc);
 
@@ -242,7 +250,7 @@ namespace Marlon.Api.Controllers
         //{
         //    var worldCupFsharpOption = _worldCupRepository.FindByYear(YearModule.create(year));
 
-        //    if (worldCupFsharpOption.HasValue()) //defined by me
+        //    if (OptionModule.IsSome(worldCupFsharpOption)) //defined by me
         //    {
         //        var worldCupFsharp = worldCupFsharpOption.Value;
 
@@ -290,6 +298,10 @@ namespace Marlon.Api.Controllers
         //{
         //    var worldCupFsharpOption = _worldCupRepository.FindByYear(YearModule.create(year));
 
+
+        //    //exhaustive checking here vs not in C# (safe way to do pattern match in C#)
+        //    // if you use FSharp types everywhere you are going to need extension methods
+        //    //Collections - IEnumerables every where, or FSHarp list or Csharp lists... or converting in the bridge codes
         //    return worldCupFsharpOption.Case<WorldCupFsharp, IActionResult>(
         //        some: worldCup =>
         //        {
