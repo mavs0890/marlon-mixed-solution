@@ -41,7 +41,7 @@ namespace Marlon.Api
 
             services.AddSingleton<IPostgresConnection, PostgresConnection>();
             services.AddSingleton<IWorldCupRepositoryCSharpV0, WorldCupRepositoryCSharpV0>();
-            services.AddSingleton<IWorldCupRepositoryCSharpWithFsharpTypesV1, WorldCupRepositoryCSharpWithFsharpTypesV1>();
+            services.AddSingleton<IWorldCupRepositoryCSharpV1, WorldCupRepositoryCSharpV1>();
             services.AddSingleton<IWorldCupRepository, WorldCupRepository>();
 
             services.AddSingleton<ICreateWorldCupWorkflow>(s =>

@@ -6,17 +6,17 @@ using Marlon.Infrastructure.Domain;
 
 namespace Marlon.Infrastructure.Repositories
 {
-    public interface IWorldCupRepositoryCSharpWithFsharpTypesV1
+    public interface IWorldCupRepositoryCSharpV1
     {
         void Save(WorldCupFsharp worldCup);
         WorldCupFsharp FindByYear(int year);
     }
 
-    public class WorldCupRepositoryCSharpWithFsharpTypesV1 : IWorldCupRepositoryCSharpWithFsharpTypesV1
+    public class WorldCupRepositoryCSharpV1 : IWorldCupRepositoryCSharpV1
     {
         private readonly IPostgresConnection _postgresConnection;
 
-        public WorldCupRepositoryCSharpWithFsharpTypesV1(IPostgresConnection postgresConnection)
+        public WorldCupRepositoryCSharpV1(IPostgresConnection postgresConnection)
         {
             _postgresConnection = postgresConnection;
         }
