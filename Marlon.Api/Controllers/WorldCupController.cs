@@ -43,7 +43,7 @@ namespace Marlon.Api.Controllers
             var worldCupVm = new WorldCupVm
             {
                 Year = worldCupCSharp.Year,
-                HostCountry = worldCupCSharp.HostCountry,
+                Host = worldCupCSharp.Host,
                 Winner = worldCupCSharp.Winner
             };
             return Content(JsonConvert.SerializeObject(worldCupVm), "application/json");
@@ -56,7 +56,7 @@ namespace Marlon.Api.Controllers
             {
                 Id = Guid.NewGuid(),
                 Year = wc.Year,
-                HostCountry = wc.HostCountry,
+                Host = wc.Host,
                 Winner = wc.Winner
             };
 
@@ -100,18 +100,18 @@ namespace Marlon.Api.Controllers
         //[HttpGet("{year}")]
         //public IActionResult Index(int year)
         //{
-        //    var worldCupCSharp = _worldCupRepositoryCSharpWithFsharpTypesV1.FindByYear(year);
+        //    var worldCupFSharp = _worldCupRepositoryCSharpWithFsharpTypesV1.FindByYear(year);
 
-        //    if (worldCupCSharp == null)
+        //    if (worldCupFSharp == null)
         //    {
         //        return NotFound();
         //    }
 
         //    var worldCupVm = new WorldCupVm
         //    {
-        //        Year = YearModule.value(worldCupCSharp.Year),
-        //        HostCountry = CountryModule.value(worldCupCSharp.HostCountry),
-        //        Winner = CountryModule.value(worldCupCSharp.Winner)
+        //        Year = YearModule.value(worldCupFSharp.Year),
+        //        Host = WorldCupHostModule.value(worldCupFSharp.Host),
+        //        Winner = CountryModule.value(worldCupFSharp.Winner)
         //    };
         //    return Content(JsonConvert.SerializeObject(worldCupVm), "application/json");
         //}
@@ -122,7 +122,7 @@ namespace Marlon.Api.Controllers
         //    var worldCupCsharp = new WorldCupFsharp(
         //        WorldCupId.NewWorldCupId(Guid.NewGuid()),
         //        YearModule.create(wc.Year),
-        //        Country.NewCountry(wc.HostCountry),
+        //        WorldCupHostModule.create(wc.Host), 
         //        Country.NewCountry(wc.Winner)
         //        );
 
@@ -195,7 +195,7 @@ namespace Marlon.Api.Controllers
         //        var worldCupVm = new WorldCupVm
         //        {
         //            Year = YearModule.value(worldCupFsharp.Year),
-        //            HostCountry = CountryModule.value(worldCupFsharp.HostCountry),
+        //            Host = CountryModule.value(worldCupFsharp.Host),
         //            Winner = CountryModule.value(worldCupFsharp.Winner)
         //        };
 
@@ -212,7 +212,7 @@ namespace Marlon.Api.Controllers
         //    var worldCupFsharpToSave = new WorldCupFsharp(
         //        WorldCupId.NewWorldCupId(Guid.NewGuid()),
         //        YearModule.create(wc.Year),
-        //        Country.NewCountry(wc.HostCountry),
+        //        Country.NewCountry(wc.Host),
         //        Country.NewCountry(wc.Winner)
         //        );
 
@@ -257,7 +257,7 @@ namespace Marlon.Api.Controllers
         //        var worldCupVm = new WorldCupVm
         //        {
         //            Year = YearModule.value(worldCupFsharp.Year),
-        //            HostCountry = CountryModule.value(worldCupFsharp.HostCountry),
+        //            Host = CountryModule.value(worldCupFsharp.Host),
         //            Winner = CountryModule.value(worldCupFsharp.Winner)
         //        };
 
@@ -274,7 +274,7 @@ namespace Marlon.Api.Controllers
         //    var worldCupFsharpToSave = new WorldCupFsharp(
         //        WorldCupId.NewWorldCupId(Guid.NewGuid()),
         //        YearModule.create(wc.Year),
-        //        Country.NewCountry(wc.HostCountry),
+        //        Country.NewCountry(wc.Host),
         //        Country.NewCountry(wc.Winner)
         //        );
 
@@ -308,7 +308,7 @@ namespace Marlon.Api.Controllers
         //            var worldCupVm = new WorldCupVm
         //            {
         //                Year = YearModule.value(worldCup.Year),
-        //                HostCountry = CountryModule.value(worldCup.HostCountry),
+        //                Host = CountryModule.value(worldCup.Host),
         //                Winner = CountryModule.value(worldCup.Winner)
         //            };
         //            return Content(JsonConvert.SerializeObject(worldCupVm), "application/json");
@@ -323,7 +323,7 @@ namespace Marlon.Api.Controllers
         //    var worldCupFsharpToSave = new WorldCupFsharp(
         //        WorldCupId.NewWorldCupId(Guid.NewGuid()),
         //        YearModule.create(wc.Year),
-        //        Country.NewCountry(wc.HostCountry),
+        //        Country.NewCountry(wc.Host),
         //        Country.NewCountry(wc.Winner)
         //    );
 
@@ -337,7 +337,7 @@ namespace Marlon.Api.Controllers
     public class WorldCupVm
     {
         public int Year { get; set; }
-        public string HostCountry { get; set; }
+        public string Host { get; set; }
         public string Winner { get; set; }
     }
 }

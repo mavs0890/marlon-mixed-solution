@@ -27,7 +27,7 @@ module WorldCupFsharpRepositoryModule =
         {
             Id = dto.Id |> WorldCupId
             Year = dto.Year |> Year.create
-            HostCountry = dto.HostCountry |> Country
+            Host = dto.HostCountry |> WorldCupHost.create
             Winner = dto.Winner |> Country
         }
 
@@ -52,7 +52,7 @@ module WorldCupFsharpRepositoryModule =
             ([
                 p "id" (worldCup.Id |> WorldCupId.value)
                 p "year" (worldCup.Year |> Year.value)
-                p "hostCountry" (worldCup.HostCountry |> Country.value)
+                p "hostCountry" (worldCup.Host |> WorldCupHost.value)
                 p "winner" (worldCup.Winner |> Country.value)
             ] |> dict)
 

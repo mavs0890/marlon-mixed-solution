@@ -3,9 +3,34 @@
 type WorldCupFsharp = {
     Id : WorldCupId
     Year : Year
-    HostCountry : Country
+    Host : WorldCupHost
     Winner : Country
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 type WorldCupFsharpWithIsEuropeanWinner = {

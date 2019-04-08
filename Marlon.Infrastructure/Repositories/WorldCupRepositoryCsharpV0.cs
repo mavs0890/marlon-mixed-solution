@@ -28,14 +28,14 @@ namespace Marlon.Infrastructure.Repositories
                 insert into world_cup
                     (id, year, host_country, winner)
                 values
-                    (@id, @year, @hostCountry, @winner);";
+                    (@id, @year, @host, @winner);";
 
             _postgresConnection.writeData(saveStatement,
                 new
                 {
                     worldCup.Id,
                     worldCup.Year,
-                    worldCup.HostCountry,
+                    worldCup.Host,
                     worldCup.Winner
                 });
 
@@ -47,7 +47,7 @@ namespace Marlon.Infrastructure.Repositories
             {
                 var readStatement =
                     @"
-                select id, year, host_country as hostCountry, winner
+                select id, year, host_country as host, winner
                 from world_cup
                 where year = @year";
                 return _postgresConnection.readData<WorldCupCsharp>(readStatement, new

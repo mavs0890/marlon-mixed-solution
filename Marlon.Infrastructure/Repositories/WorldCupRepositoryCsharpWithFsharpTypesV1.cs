@@ -35,7 +35,7 @@ namespace Marlon.Infrastructure.Repositories
                 {
                     WorldCupId = WorldCupIdModule.value(worldCup.Id),
                     Year = YearModule.value(worldCup.Year),
-                    HostCountry = CountryModule.value(worldCup.HostCountry),
+                    HostCountry = WorldCupHostModule.value(worldCup.Host),
                     Winner = CountryModule.value(worldCup.Winner)
                 });
 
@@ -66,7 +66,7 @@ namespace Marlon.Infrastructure.Repositories
                 return new WorldCupFsharp(
                     WorldCupId.NewWorldCupId(result.Id),
                     YearModule.create(result.Year),
-                    Country.NewCountry(result.HostCountry),
+                    WorldCupHost.NewHost(Country.NewCountry(result.HostCountry)),
                     Country.NewCountry(result.Winner)
                     );
             }
