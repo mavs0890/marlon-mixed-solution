@@ -12,13 +12,13 @@ namespace Marlon.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WorldCupController4 : Controller
+    public class WorldCupController3 : Controller
     {
         // 3 - $$ - Wrapper Class
         private readonly IWorldCupRepository _worldCupRepository;
 
 
-        public WorldCupController4(IWorldCupRepository worldCupRepository)
+        public WorldCupController3(IWorldCupRepository worldCupRepository)
         {
             _worldCupRepository = worldCupRepository;
         }
