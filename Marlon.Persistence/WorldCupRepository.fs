@@ -69,8 +69,7 @@ module WorldCupFsharpRepositoryModule =
             ([ 
                 p "year" year
             ] |> dict)
-        |> List.ofSeq
-        |> List.singleOrNone
+        |> Seq.tryHead
         |> Option.map toDomain
 
 // end - 2 - $$

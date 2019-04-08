@@ -35,13 +35,9 @@ namespace Marlon.Api.Controllers
         [HttpGet("{year}")]
         public IActionResult Index(int year)
         {
-            Func<string, IDictionary<string, object>, FSharpList<WorldCupFsharpRepositoryModule.WorldCupDto>>
-                readDataFunc = (s, p) =>
-                {
-                    var list = _postgresConnection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>(s,
-                        p);
-                    return ListModule.OfSeq(list);
-                };
+            Func<string, IDictionary<string, object>, IEnumerable<WorldCupFsharpRepositoryModule.WorldCupDto>>
+                readDataFunc = (s, p) => _postgresConnection.readData<WorldCupFsharpRepositoryModule.WorldCupDto>(s,
+                    p);
 
             var readData = FuncConvert.FromFunc(readDataFunc);
 
